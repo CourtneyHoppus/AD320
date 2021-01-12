@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    padding: 10px;
+    max-width: 960px;
+    min-width: 300px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.left {
+    width: 48%;
+    clear: left;
+    float: left;
+    margin: 1%;
+    padding: 2%;
+    border: 2px;
+    border-style: solid;
+    background-color: cadetblue;
+}
+
+.right {
+    width: 48%;
+    clear: right;
+    float: right;
+    margin: 1%;
+    padding: 2%;
+    border: 2px;
+    border-style: solid;
+    background-color:darksalmon;
+}
