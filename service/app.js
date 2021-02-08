@@ -18,11 +18,17 @@ const usersRouter = require('./routes/users');
 
 app.use(express.json());
 
-app.use('/v1/users', usersRouter);
-app.post('/v2/users', (req, res) => {
-    res.send('Something in the future');
+app.use('/api/v1/users', usersRouter);
+
+app.get('/', (req, res) => {
+    res.send('<h2>Hello World, I am a Test App</h2>')
 })
 
+app.post('/api/v2/users', (req, res) => {
+    res.status(501);
+    res.send('New user update');
+});
+
 app.listen(port, () => {
-    console.log(`Test app listening at http://localhost:${port}`)
+    console.log(`Listening at http://localhost:${port}`);
 });
