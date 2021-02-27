@@ -7,7 +7,7 @@ const User = require("../models/user");
 exports.getUsers = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: 'show all users' });
+        .send({ success: true, msg: 'show all users' });
 }
 
 // @desc    get a user
@@ -16,7 +16,7 @@ exports.getUsers = (req, res, next) => {
 exports.getUser = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: `show user ${req.params.id}`});
+        .send({ success: true, msg: `show user ${req.params.id}`});
 }
 
 // @desc    create user
@@ -34,7 +34,7 @@ exports.createUser = (req, res, next) => {
     if (req.body.status == null) {
         res
             .status(406)
-            .send({error: "Must pick account type"});
+            .send({error: "Must pick account type: buyer, seller, admin"});
     }
 
     const user = {
@@ -48,7 +48,7 @@ exports.createUser = (req, res, next) => {
         .then((newUser) => {
             res
                 .status(200)
-                .send({userId: newUser._id });
+                .send({ userId: newUser._id, success: true, msg: 'create new user' });
         })
         .catch((error) => {
             console.log(error);
@@ -62,7 +62,7 @@ exports.createUser = (req, res, next) => {
 exports.updateUser = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: `update user ${req.params.id}` });
+        .send({ success: true, msg: `update user ${req.params.id}` });
 }
 
 // @desc    delete user
@@ -71,5 +71,5 @@ exports.updateUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: `delete user ${req.params.id}` });
+        .send({ success: true, msg: `delete user ${req.params.id}` });
 }

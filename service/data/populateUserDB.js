@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config({ path: `${__dirname}/../.env` });
 
-const usersData = require('../data/usersData');
+const usersData = require('./usersData');
 
 const User = require('../models/user');
 
@@ -22,7 +22,3 @@ mongoose
     );
 
 setTimeout(() => mongoose.connection.close(), 2000);
-
-
-
-

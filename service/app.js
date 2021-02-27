@@ -5,12 +5,13 @@ const mongoose = require('mongoose');
 
 // route files
 const usersRouter  = require('./routes/users');
+const messagesRouter = require('./routes/messages');
 
 // load env vars
 dotenv.config();
 
 const app = express();
-app.use(express.json);
+app.use(express.json());
 
 // dev logging middleware
 /* if(process.env.NODE_ENV === 'development') {
@@ -34,6 +35,7 @@ db.on('close', () => { console.log('MongoDB connection closed'); });
 
 // mount routers
 app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/messages', messagesRouter);
 
 const PORT = process.env.PORT || 8000;
 
