@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '../../config/config.env' });
+require('dotenv').config({ path: `${__dirname}/../.env` });
 
 const usersData = require('../data/usersData');
 
@@ -11,6 +11,7 @@ usersData.usersList.forEach((user) => {
 
 const admin = process.env.MONGO_USER;
 const password = process.env.MONGO_PASS;
+console.log(admin, password)
 const uri = `mongodb+srv://${admin}:${password}@testcluster.2t0xa.mongodb.net/testDatabase?retryWrites=true&w=majority`;
 mongoose;
 mongoose

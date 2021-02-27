@@ -1,5 +1,6 @@
 const User = require("../models/user");
 
+
 // @desc    get all users
 // @route   GET /api/v1/users
 // @access  Public
@@ -47,8 +48,7 @@ exports.createUser = (req, res, next) => {
         .then((newUser) => {
             res
                 .status(200)
-                .json({ success: true, msg: 'create new user' })
-                .send({userId: newUser._id});
+                .send({userId: newUser._id });
         })
         .catch((error) => {
             console.log(error);

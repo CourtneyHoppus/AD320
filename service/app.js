@@ -7,9 +7,10 @@ const mongoose = require('mongoose');
 const usersRouter  = require('./routes/users');
 
 // load env vars
-dotenv.config({ path: './config/config.env'});
+dotenv.config();
 
 const app = express();
+app.use(express.json);
 
 // dev logging middleware
 /* if(process.env.NODE_ENV === 'development') {
