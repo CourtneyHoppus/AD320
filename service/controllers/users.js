@@ -36,19 +36,19 @@ exports.createUser = (req, res, next) => {
             .send({error: "Must pick account type"});
     }
 
-    const newUser = {
+    const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         accountID: req.body.accountID,
         status: req.body.status
     };
     
-    User.create(newUser)
+    User.create(user)
         .then((newUser) => {
             res
                 .status(200)
                 .json({ success: true, msg: 'create new user' })
-                .send({newUserId: newUser._id});
+                .send({userId: newUser._id});
         })
         .catch((error) => {
             console.log(error);
