@@ -1,12 +1,13 @@
 const User = require("../models/user");
 
+
 // @desc    get all users
 // @route   GET /api/v1/users
 // @access  Public
 exports.getUsers = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: 'show all users' });
+        .send({ success: true, msg: 'show all users' });
 }
 
 // @desc    get a user
@@ -15,7 +16,7 @@ exports.getUsers = (req, res, next) => {
 exports.getUser = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: `show user ${req.params.id}`});
+        .send({ success: true, msg: `show user ${req.params.id}`});
 }
 
 // @desc    create user
@@ -33,22 +34,21 @@ exports.createUser = (req, res, next) => {
     if (req.body.status == null) {
         res
             .status(406)
-            .send({error: "Must pick account type"});
+            .send({error: "Must pick account type: buyer, seller, admin"});
     }
 
-    const newUser = {
+    const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         accountID: req.body.accountID,
         status: req.body.status
     };
     
-    User.create(newUser)
+    User.create(user)
         .then((newUser) => {
             res
                 .status(200)
-                .json({ success: true, msg: 'create new user' })
-                .send({newUserId: newUser._id});
+                .send({ userId: newUser._id, success: true, msg: 'create new user' });
         })
         .catch((error) => {
             console.log(error);
@@ -62,7 +62,7 @@ exports.createUser = (req, res, next) => {
 exports.updateUser = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: `update user ${req.params.id}` });
+        .send({ success: true, msg: `update user ${req.params.id}` });
 }
 
 // @desc    delete user
@@ -71,5 +71,5 @@ exports.updateUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
     res
         .status(200)
-        .json({ success: true, msg: `delete user ${req.params.id}` });
+        .send({ success: true, msg: `delete user ${req.params.id}` });
 }
